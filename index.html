@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyMacro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="app">
+    <header>
+      <p class="date">Hoy · 28 de junio</p>
+      <h1>EasyMacro</h1>
+      <p class="subtitle">Macros simples. Sin líos.</p>
+    </header>
+
+    <section class="summary-wrapper">
+  <div class="card summary">
+      <div class="macro">
+        <span>🔥 Calorías</span>
+        <strong class="total-kcal">0 / 2750 kcal</strong>
+      </div>
+
+      <div class="macro">
+        <span>🥩 Proteína</span>
+        <strong class="total-proteina">0 / 180 g</strong>
+      </div>
+
+      <div class="macro">
+        <span>🍚 Carbohidratos</span>
+        <strong class="total-carbs">0 / 330 g</strong>
+      </div>
+
+      <div class="macro">
+        <span>🥑 Grasas</span>
+        <strong class="total-grasas">0 / 75 g</strong>
+      </div>
+
+      <div class="macro">
+        <span>💧 Agua</span>
+        <strong class="total-water">0 / 2.5 L</strong>
+      </div>
+      <div class="water-tank">
+    <div class="water-fill"></div>
+</div>
+    </section>
+
+    <section class="quick-actions">
+      <button class="circle-action meals-toggle-button">
+        📝
+        <span class="meal-count">0</span>
+      </button>
+    </section>
+
+    <section class="water-action">
+  <button class="circle-action water-button">
+    💧
+  </button>
+</section>
+    
+    <button class="add-button">+</button>
+
+    <div class="modal hidden">
+      <div class="modal-content">
+        <button class="close-button">&times;</button>
+
+        <h2 class="modal-title">Añadir comida</h2>
+
+        <div class="search-view">
+          <label>Buscar comida</label>
+          <input class="food-search" type="text" placeholder="Ej: pollo, yogur, arroz...">
+
+          <div class="food-list"></div>
+
+          <label>Cantidad en gramos</label>
+          <input class="food-amount" type="number" placeholder="Ej: 100">
+
+          <label>¿Cuándo lo has comido?</label>
+          <select class="meal-type">
+            <option>Desayuno</option>
+            <option>Comida</option>
+            <option>Merienda</option>
+            <option>Cena</option>
+            <option>Snack</option>
+          </select>
+
+          <button class="add-food-button hidden">Añadir alimento</button>
+
+          <button class="create-food-button">+ Crear nueva comida</button>
+        </div>
+
+        <div class="create-view hidden">
+          <label>Nombre</label>
+          <input class="new-food-name" type="text" placeholder="Ej: pollo">
+
+          <label>Kcal por 100 g</label>
+          <input class="new-food-kcal" type="number" placeholder="Ej: 165">
+
+          <label>Proteína por 100 g</label>
+          <input class="new-food-protein" type="number" placeholder="Ej: 31">
+
+          <label>Carbohidratos por 100 g</label>
+          <input class="new-food-carbs" type="number" placeholder="Ej: 0">
+
+          <label>Grasas por 100 g</label>
+          <input class="new-food-fat" type="number" placeholder="Ej: 4">
+
+          <button class="save-new-food-button">Guardar alimento</button>
+        </div>
+      </div>
+    </div>
+  </main>
+<div class="meals-modal hidden">
+  <div class="modal-content">
+    <button class="close-meals-button">&times;</button>
+
+    <h2>Comidas de hoy</h2>
+
+    <div class="meal-card">
+      <span>☀️ Desayuno</span>
+      <p class="desayuno-list">No hay comidas añadidas.</p>
+    </div>
+
+    <div class="meal-card">
+      <span>🍽️ Comida</span>
+      <p class="comida-list">No hay comidas añadidas.</p>
+    </div>
+
+<div class="meal-card">
+  <span>🥪 Merienda</span>
+  <p class="merienda-list">No hay comidas añadidas.</p>
+</div>
+
+    <div class="meal-card">
+      <span>🌙 Cena</span>
+      <p class="cena-list">No hay comidas añadidas.</p>
+    </div>
+
+    <div class="meal-card">
+  <span>🍎 Snack</span>
+  <p class="snack-list">No hay comidas añadidas.</p>
+</div>
+
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

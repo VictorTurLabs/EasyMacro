@@ -1,0 +1,365 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+.app {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 22px 20px 120px;
+}
+
+.date {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+h1 {
+  margin: 4px 0 2px;
+  font-size: 34px;
+  letter-spacing: -1px;
+  font-family: "Playfair Display", serif;
+}
+
+.subtitle {
+  margin: 0 0 22px;
+  color: #6b7280;
+}
+
+.card {
+  background: white;
+  border-radius: 26px;
+  padding: 18px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.macro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.macro:last-child {
+  border-bottom: none;
+}
+
+.macro span {
+  color: #374151;
+}
+
+.macro strong {
+  font-size: 15px;
+}
+
+.quick-actions {
+  position: fixed;
+  right: 28px;
+  bottom: 34px;
+  z-index: 10;
+}
+
+.circle-action {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  font-size: 25px;
+  cursor: pointer;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+  transition: 0.2s;
+}
+
+.circle-action:hover {
+  transform: scale(1.06);
+}
+
+.meal-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+
+  min-width: 22px;
+  height: 22px;
+
+  border-radius: 999px;
+
+  background: #eef2f7;
+  color: #6b7280;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.add-button {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  width: 82px;
+  height: 82px;
+  border: none;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  font-size: 48px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 18px 42px rgba(37, 99, 235, 0.4);
+  transition: transform 0.2s;
+}
+
+.add-button:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
+.modal,
+.meals-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  border-radius: 30px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+}
+
+.close-button,
+.close-meals-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 21px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-meals-button:hover {
+  background: #e5e7eb;
+}
+
+.modal-content h2 {
+  margin: 0 0 22px;
+  font-size: 25px;
+}
+
+.modal-content label {
+  display: block;
+  margin: 16px 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  font-size: 16px;
+  background: #f9fafb;
+}
+
+.food-item {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: 0.15s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.food-item:hover {
+  background: #eef2f7;
+}
+
+.food-item.selected {
+  background: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.food-item strong {
+  font-size: 15px;
+}
+
+.food-item span {
+  color: #6b7280;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.empty-state {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #f9fafb;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.add-food-button,
+.save-new-food-button,
+.create-food-button {
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  border-radius: 999px;
+  padding: 17px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-food-button {
+  background: #16a34a;
+  color: white;
+}
+
+.save-new-food-button,
+.create-food-button {
+  background: #111827;
+  color: white;
+}
+
+.add-food-button:hover {
+  background: #15803d;
+}
+
+.save-new-food-button:hover,
+.create-food-button:hover {
+  background: #1f2937;
+}
+
+.meal-card {
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 14px;
+  border: 1px solid #eef2f7;
+}
+
+.meal-card span {
+  display: block;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.meal-card p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.meal-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-top: 8px;
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.delete-meal-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.hidden,
+.meals-modal.hidden {
+  display: none;
+}
+
+.water-action {
+  position: fixed;
+  left: 28px;
+  bottom: 34px;
+  z-index: 10;
+}
+
+.summary-wrapper {
+  position: relative;
+}
+
+.water-tank {
+  position: absolute;
+  right: -52px;
+  top: 26px;
+
+  width: 27px;
+  height: 250px;
+
+  border: 3px solid #bfdbfe;
+  border-radius: 999px;
+
+  overflow: hidden;
+  background: #eff6ff;
+
+  box-shadow: 0 10px 24px rgba(96, 165, 250, 0.22);
+}
+
+.water-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 0%;
+
+  background: linear-gradient(180deg, #93c5fd, #3b82f6);
+  border-radius: 999px;
+
+  transition: height 0.4s ease;
+}
+
+.water-button.reset-warning {
+  background: #ff8282;
+  transform: scale(1.08);
+}
