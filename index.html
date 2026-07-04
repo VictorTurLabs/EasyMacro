@@ -4,46 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EasyMacro</title>
+  <link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0F172A">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <main class="app">
     <header>
-      <p class="date">Hoy · 28 de junio</p>
+      <p class="date"></p>
       <h1>EasyMacro</h1>
       <p class="subtitle">Macros simples. Sin líos.</p>
     </header>
 
     <section class="summary-wrapper">
-  <div class="card summary">
-      <div class="macro">
-        <span>🔥 Calorías</span>
-        <strong class="total-kcal">0 / 2750 kcal</strong>
+      <div class="card summary">
+        <div class="macro">
+          <span>🔥 Calorías</span>
+          <strong class="total-kcal">0 / 2750 kcal</strong>
+        </div>
+
+        <div class="macro">
+          <span>🥩 Proteína</span>
+          <strong class="total-proteina">0 / 180 g</strong>
+        </div>
+
+        <div class="macro">
+          <span>🍚 Carbohidratos</span>
+          <strong class="total-carbs">0 / 330 g</strong>
+        </div>
+
+        <div class="macro">
+          <span>🥑 Grasas</span>
+          <strong class="total-grasas">0 / 75 g</strong>
+        </div>
+
+        <div class="macro">
+          <span>💧 Agua</span>
+          <div class="water-info">
+            <strong class="total-water">0 / 2.5 L</strong>
+            <button class="reset-water-button">↺</button>
+          </div>
+        </div>
       </div>
 
-      <div class="macro">
-        <span>🥩 Proteína</span>
-        <strong class="total-proteina">0 / 180 g</strong>
-      </div>
-
-      <div class="macro">
-        <span>🍚 Carbohidratos</span>
-        <strong class="total-carbs">0 / 330 g</strong>
-      </div>
-
-      <div class="macro">
-        <span>🥑 Grasas</span>
-        <strong class="total-grasas">0 / 75 g</strong>
-      </div>
-
-      <div class="macro">
-        <span>💧 Agua</span>
-        <strong class="total-water">0 / 2.5 L</strong>
-      </div>
       <div class="water-tank">
-    <div class="water-fill"></div>
-</div>
+        <div class="water-fill"></div>
+      </div>
     </section>
 
     <section class="quick-actions">
@@ -54,11 +66,9 @@
     </section>
 
     <section class="water-action">
-  <button class="circle-action water-button">
-    💧
-  </button>
-</section>
-    
+      <button class="circle-action water-button">💧</button>
+    </section>
+
     <button class="add-button">+</button>
 
     <div class="modal hidden">
@@ -73,7 +83,7 @@
 
           <div class="food-list"></div>
 
-          <label>Cantidad en gramos</label>
+          <label class="food-amount-label">Cantidad en gramos</label>
           <input class="food-amount" type="number" placeholder="Ej: 100">
 
           <label>¿Cuándo lo has comido?</label>
@@ -86,64 +96,107 @@
           </select>
 
           <button class="add-food-button hidden">Añadir alimento</button>
-
           <button class="create-food-button">+ Crear nueva comida</button>
+          <button class="create-recipe-button">🍳 Crear receta</button>
         </div>
 
         <div class="create-view hidden">
           <label>Nombre</label>
           <input class="new-food-name" type="text" placeholder="Ej: pollo">
 
-          <label>Kcal por 100 g</label>
-          <input class="new-food-kcal" type="number" placeholder="Ej: 165">
+          <label>Tipo de medida</label>
+          <select class="food-unit-type">
+            <option value="gramos">Por 100 g</option>
+            <option value="unidad">Por unidad</option>
+          </select>
 
-          <label>Proteína por 100 g</label>
-          <input class="new-food-protein" type="number" placeholder="Ej: 31">
+          <div class="unit-name-container hidden">
+            <label>Unidad en singular</label>
+            <input class="unit-name" type="text" placeholder="Ej: huevo, lata, scoop...">
 
-          <label>Carbohidratos por 100 g</label>
-          <input class="new-food-carbs" type="number" placeholder="Ej: 0">
+            <label>Unidad en plural</label>
+            <input class="unit-name-plural" type="text" placeholder="Ej: huevos, latas, scoops...">
+          </div>
 
-          <label>Grasas por 100 g</label>
-          <input class="new-food-fat" type="number" placeholder="Ej: 4">
+          <div class="macro-grid">
+            <div>
+              <label class="kcal-label">Kcal por 100 g</label>
+              <input class="new-food-kcal" type="number" placeholder="165">
+            </div>
+
+            <div>
+              <label class="protein-label">Proteína</label>
+              <input class="new-food-protein" type="number" placeholder="31">
+            </div>
+
+            <div>
+              <label class="carbs-label">Carbohidratos</label>
+              <input class="new-food-carbs" type="number" placeholder="0">
+            </div>
+
+            <div>
+              <label class="fat-label">Grasas</label>
+              <input class="new-food-fat" type="number" placeholder="4">
+            </div>
+          </div>
 
           <button class="save-new-food-button">Guardar alimento</button>
+        </div>
+
+        <div class="recipe-view hidden">
+          <label>Nombre de la receta</label>
+          <input class="recipe-name" type="text" placeholder="Ej: Bowl de pollo">
+
+          <label>Buscar ingrediente</label>
+          <input class="recipe-food-search" type="text" placeholder="Ej: arroz, pollo...">
+
+          <div class="recipe-food-list"></div>
+
+          <label class="recipe-food-amount-label">Cantidad en gramos</label>
+          <input class="recipe-food-amount" type="number" placeholder="100">
+
+          <button class="add-ingredient-button hidden">Añadir ingrediente</button>
+
+          <div class="recipe-ingredients-list"></div>
+
+          <button class="save-recipe-button">Guardar receta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="meals-modal hidden">
+      <div class="modal-content">
+        <button class="close-meals-button">&times;</button>
+
+        <h2>Comidas de hoy</h2>
+
+        <div class="meal-card">
+          <span>☀️ Desayuno</span>
+          <p class="desayuno-list">No hay comidas añadidas.</p>
+        </div>
+
+        <div class="meal-card">
+          <span>🍽️ Comida</span>
+          <p class="comida-list">No hay comidas añadidas.</p>
+        </div>
+
+        <div class="meal-card">
+          <span>🥪 Merienda</span>
+          <p class="merienda-list">No hay comidas añadidas.</p>
+        </div>
+
+        <div class="meal-card">
+          <span>🌙 Cena</span>
+          <p class="cena-list">No hay comidas añadidas.</p>
+        </div>
+
+        <div class="meal-card">
+          <span>🍎 Snack</span>
+          <p class="snack-list">No hay comidas añadidas.</p>
         </div>
       </div>
     </div>
   </main>
-<div class="meals-modal hidden">
-  <div class="modal-content">
-    <button class="close-meals-button">&times;</button>
-
-    <h2>Comidas de hoy</h2>
-
-    <div class="meal-card">
-      <span>☀️ Desayuno</span>
-      <p class="desayuno-list">No hay comidas añadidas.</p>
-    </div>
-
-    <div class="meal-card">
-      <span>🍽️ Comida</span>
-      <p class="comida-list">No hay comidas añadidas.</p>
-    </div>
-
-<div class="meal-card">
-  <span>🥪 Merienda</span>
-  <p class="merienda-list">No hay comidas añadidas.</p>
-</div>
-
-    <div class="meal-card">
-      <span>🌙 Cena</span>
-      <p class="cena-list">No hay comidas añadidas.</p>
-    </div>
-
-    <div class="meal-card">
-  <span>🍎 Snack</span>
-  <p class="snack-list">No hay comidas añadidas.</p>
-</div>
-
-  </div>
-</div>
 
   <script src="script.js"></script>
 </body>
