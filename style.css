@@ -10,10 +10,14 @@ body {
 }
 
 .app {
-  max-width: 430px;
+  max-width: 390px;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 22px 20px 120px;
+  padding: 18px 14px 110px;
+}
+
+header {
+  text-align: center;
 }
 
 .date {
@@ -24,20 +28,25 @@ body {
 
 h1 {
   margin: 4px 0 2px;
-  font-size: 34px;
+  font-size: 32px;
   letter-spacing: -1px;
   font-family: "Playfair Display", serif;
 }
 
 .subtitle {
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   color: #6b7280;
+}
+
+.summary-wrapper {
+  position: relative;
+  padding-right: 18px;
 }
 
 .card {
   background: white;
-  border-radius: 26px;
-  padding: 18px;
+  border-radius: 24px;
+  padding: 14px 16px;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
 }
 
@@ -45,7 +54,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 13px 0;
+  padding: 11px 0;
   border-bottom: 1px solid #eef2f7;
 }
 
@@ -55,53 +64,93 @@ h1 {
 
 .macro span {
   color: #374151;
+  font-size: 15px;
 }
 
 .macro strong {
-  font-size: 15px;
+  font-size: 14px;
+}
+
+.water-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reset-water-button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: #eef2f7;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.water-tank {
+  position: absolute;
+  right: -2px;
+  top: 22px;
+  width: 14px;
+  height: 150px;
+  border: 2px solid #bfdbfe;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #eff6ff;
+}
+
+.water-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #93c5fd, #3b82f6);
+  border-radius: 999px;
+  transition: height 0.4s ease;
 }
 
 .quick-actions {
   position: fixed;
-  right: 28px;
-  bottom: 34px;
+  right: 22px;
+  bottom: 30px;
+  z-index: 10;
+}
+
+.water-action {
+  position: fixed;
+  left: 22px;
+  bottom: 30px;
   z-index: 10;
 }
 
 .circle-action {
   position: relative;
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   border: none;
   border-radius: 50%;
   background: white;
-  font-size: 25px;
+  font-size: 24px;
   cursor: pointer;
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
-  transition: 0.2s;
-}
-
-.circle-action:hover {
-  transform: scale(1.06);
 }
 
 .meal-count {
   position: absolute;
   top: -4px;
   right: -4px;
-
   min-width: 22px;
   height: 22px;
-
+  padding: 0 6px;
   border-radius: 999px;
-
   background: #eef2f7;
   color: #6b7280;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 12px;
   font-weight: 800;
 }
@@ -109,26 +158,22 @@ h1 {
 .add-button {
   position: fixed;
   left: 50%;
-  bottom: 26px;
+  bottom: 22px;
   transform: translateX(-50%);
-  width: 82px;
-  height: 82px;
+  width: 74px;
+  height: 74px;
   border: none;
   border-radius: 50%;
   background: #2563eb;
   color: white;
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 300;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   box-shadow: 0 18px 42px rgba(37, 99, 235, 0.4);
-  transition: transform 0.2s;
-}
-
-.add-button:hover {
-  transform: translateX(-50%) scale(1.08);
+  z-index: 11;
 }
 
 .modal,
@@ -140,12 +185,15 @@ h1 {
   justify-content: center;
   align-items: flex-end;
   padding: 16px;
+  z-index: 20;
 }
 
 .modal-content {
   position: relative;
   width: 100%;
   max-width: 430px;
+  max-height: 88vh;
+  overflow-y: auto;
   background: white;
   border-radius: 30px;
   padding: 24px;
@@ -166,11 +214,6 @@ h1 {
   font-size: 21px;
   font-weight: 700;
   cursor: pointer;
-}
-
-.close-button:hover,
-.close-meals-button:hover {
-  background: #e5e7eb;
 }
 
 .modal-content h2 {
@@ -205,18 +248,21 @@ h1 {
   cursor: pointer;
   transition: 0.15s;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-.food-item:hover {
-  background: #eef2f7;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .food-item.selected {
   background: #dbeafe;
   border-color: #3b82f6;
+}
+
+.food-item-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .food-item strong {
@@ -226,7 +272,64 @@ h1 {
 .food-item span {
   color: #6b7280;
   font-size: 13px;
-  white-space: nowrap;
+}
+
+.food-menu {
+  position: relative;
+}
+
+.food-menu-button {
+  border: none;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.food-menu-dropdown {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  width: 150px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.food-menu-dropdown button {
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 14px 18px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.food-menu-dropdown button:hover {
+  background: #f3f4f6;
+}
+
+.recipe-badge {
+  background: #fef3c7;
+  color: #92400e;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  margin-left: 6px;
+}
+
+.recipe-ingredients-preview {
+  display: block;
+  margin-top: 2px;
+  color: #9ca3af;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .empty-state {
@@ -242,18 +345,22 @@ h1 {
 
 .add-food-button,
 .save-new-food-button,
-.create-food-button {
+.create-food-button,
+.create-recipe-button,
+.save-recipe-button,
+.add-ingredient-button {
   width: 100%;
   margin-top: 20px;
   border: none;
   border-radius: 999px;
   padding: 17px;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
 }
 
-.add-food-button {
+.add-food-button,
+.add-ingredient-button {
   background: #16a34a;
   color: white;
 }
@@ -264,13 +371,30 @@ h1 {
   color: white;
 }
 
-.add-food-button:hover {
-  background: #15803d;
+.create-recipe-button {
+  background: #fef3c7;
+  color: #92400e;
 }
 
-.save-new-food-button:hover,
-.create-food-button:hover {
-  background: #1f2937;
+.save-recipe-button {
+  background: #92400e;
+  color: white;
+}
+
+.macro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.macro-grid label {
+  margin-top: 0;
+  font-size: 13px;
+}
+
+.macro-grid input {
+  padding: 14px;
 }
 
 .meal-card {
@@ -313,53 +437,60 @@ h1 {
 }
 
 .hidden,
-.meals-modal.hidden {
+.modal.hidden,
+.meals-modal.hidden,
+.food-menu-dropdown.hidden {
   display: none;
 }
 
-.water-action {
-  position: fixed;
-  left: 28px;
-  bottom: 34px;
-  z-index: 10;
+.food-list .food-item,
+.recipe-food-list .food-item {
+  padding: 9px 11px;
+  margin-top: 6px;
+  gap: 4px;
+  border-radius: 12px;
 }
 
-.summary-wrapper {
-  position: relative;
+.food-list .food-item strong,
+.recipe-food-list .food-item strong {
+  font-size: 14px;
 }
 
-.water-tank {
-  position: absolute;
-  right: -52px;
-  top: 26px;
-
-  width: 27px;
-  height: 250px;
-
-  border: 3px solid #bfdbfe;
-  border-radius: 999px;
-
-  overflow: hidden;
-  background: #eff6ff;
-
-  box-shadow: 0 10px 24px rgba(96, 165, 250, 0.22);
+.food-list .food-item span,
+.recipe-food-list .food-item span {
+  font-size: 11px;
+  line-height: 1.25;
 }
 
-.water-fill {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  width: 100%;
-  height: 0%;
-
-  background: linear-gradient(180deg, #93c5fd, #3b82f6);
-  border-radius: 999px;
-
-  transition: height 0.4s ease;
+.food-list .food-menu-button {
+  padding: 3px 8px;
+  font-size: 17px;
 }
 
-.water-button.reset-warning {
-  background: #ff8282;
-  transform: scale(1.08);
+.recipe-ingredients-preview {
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.food-item-info{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.food-item-info strong{
+    font-size:15px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.food-macros{
+
+    font-size:12px;
+    color:#6b7280;
+    white-space:nowrap;
+
 }
