@@ -14,13 +14,101 @@ let ingredientesReceta = [];
 
 const alimentosBase = [
   { nombre: "Pechuga de pollo", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 165, proteina: 31, carbs: 0, grasas: 4 },
+  { nombre: "Pollo asado", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 190, proteina: 27, carbs: 0, grasas: 8 },
+  { nombre: "Ternera magra", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 170, proteina: 26, carbs: 0, grasas: 7 },
+  { nombre: "Carne picada 5%", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 137, proteina: 21, carbs: 0, grasas: 5 },
+  { nombre: "Lomo de cerdo", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 160, proteina: 27, carbs: 0, grasas: 6 },
+  { nombre: "Jamón serrano", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 240, proteina: 30, carbs: 0, grasas: 13 },
+  { nombre: "Jamón cocido", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 110, proteina: 18, carbs: 2, grasas: 3 },
+  { nombre: "Pavo en lonchas", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 105, proteina: 20, carbs: 2, grasas: 2 },
+  { nombre: "Atún al natural", tipoMedida: "unidad", unidad: "lata", unidadPlural: "latas", kcal: 110, proteina: 24, carbs: 0, grasas: 1 },
+  { nombre: "Salmón", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 208, proteina: 20, carbs: 0, grasas: 13 },
+  { nombre: "Merluza", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 90, proteina: 18, carbs: 0, grasas: 2 },
+  { nombre: "Bacalao", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 82, proteina: 18, carbs: 0, grasas: 0.7 },
+  { nombre: "Gambas", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 99, proteina: 24, carbs: 0.2, grasas: 0.3 },
+
+  { nombre: "Huevo", tipoMedida: "unidad", unidad: "huevo", unidadPlural: "huevos", kcal: 70, proteina: 6, carbs: 0.5, grasas: 5 },
+  { nombre: "Clara de huevo", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 52, proteina: 11, carbs: 0.7, grasas: 0.2 },
+
   { nombre: "Arroz blanco cocido", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 130, proteina: 2.7, carbs: 28, grasas: 0.3 },
-  { nombre: "Plátano", tipoMedida: "unidad", unidad: "plátano", unidadPlural: "plátanos", kcal: 89, proteina: 1.1, carbs: 23, grasas: 0.3 }
+  { nombre: "Arroz basmati cocido", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 121, proteina: 3, carbs: 25, grasas: 0.4 },
+  { nombre: "Pasta cocida", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 157, proteina: 5.8, carbs: 31, grasas: 0.9 },
+  { nombre: "Avena", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 389, proteina: 16.9, carbs: 66, grasas: 6.9 },
+  { nombre: "Patata cocida", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 87, proteina: 1.9, carbs: 20, grasas: 0.1 },
+  { nombre: "Patata frita airfryer", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 140, proteina: 2.5, carbs: 25, grasas: 4 },
+  { nombre: "Boniato", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 86, proteina: 1.6, carbs: 20, grasas: 0.1 },
+  { nombre: "Lentejas cocidas", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 116, proteina: 9, carbs: 20, grasas: 0.4 },
+  { nombre: "Garbanzos cocidos", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 164, proteina: 9, carbs: 27, grasas: 2.6 },
+  { nombre: "Judías cocidas", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 127, proteina: 8.7, carbs: 23, grasas: 0.5 },
+
+  { nombre: "Pan Bimbo", tipoMedida: "unidad", unidad: "rebanada", unidadPlural: "rebanadas", kcal: 70, proteina: 2.5, carbs: 13, grasas: 1 },
+  { nombre: "Pan integral", tipoMedida: "unidad", unidad: "rebanada", unidadPlural: "rebanadas", kcal: 75, proteina: 3, carbs: 13, grasas: 1.2 },
+  { nombre: "Pan de molde sin corteza", tipoMedida: "unidad", unidad: "rebanada", unidadPlural: "rebanadas", kcal: 65, proteina: 2.2, carbs: 12, grasas: 1 },
+  { nombre: "Pan normal", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 265, proteina: 9, carbs: 49, grasas: 3.2 },
+  { nombre: "Pan pita", tipoMedida: "unidad", unidad: "pan pita", unidadPlural: "panes pita", kcal: 165, proteina: 5.5, carbs: 33, grasas: 1.2 },
+  { nombre: "Tortilla wrap", tipoMedida: "unidad", unidad: "wrap", unidadPlural: "wraps", kcal: 190, proteina: 5, carbs: 32, grasas: 5 },
+
+  { nombre: "Plátano", tipoMedida: "unidad", unidad: "plátano", unidadPlural: "plátanos", kcal: 105, proteina: 1.3, carbs: 27, grasas: 0.3 },
+  { nombre: "Manzana", tipoMedida: "unidad", unidad: "manzana", unidadPlural: "manzanas", kcal: 95, proteina: 0.5, carbs: 25, grasas: 0.3 },
+  { nombre: "Naranja", tipoMedida: "unidad", unidad: "naranja", unidadPlural: "naranjas", kcal: 62, proteina: 1.2, carbs: 15, grasas: 0.2 },
+  { nombre: "Mandarina", tipoMedida: "unidad", unidad: "mandarina", unidadPlural: "mandarinas", kcal: 40, proteina: 0.6, carbs: 10, grasas: 0.1 },
+  { nombre: "Pera", tipoMedida: "unidad", unidad: "pera", unidadPlural: "peras", kcal: 100, proteina: 0.6, carbs: 27, grasas: 0.2 },
+  { nombre: "Kiwi", tipoMedida: "unidad", unidad: "kiwi", unidadPlural: "kiwis", kcal: 45, proteina: 0.8, carbs: 10, grasas: 0.4 },
+  { nombre: "Melocotón", tipoMedida: "unidad", unidad: "melocotón", unidadPlural: "melocotones", kcal: 60, proteina: 1.4, carbs: 14, grasas: 0.4 },
+  { nombre: "Nectarina", tipoMedida: "unidad", unidad: "nectarina", unidadPlural: "nectarinas", kcal: 62, proteina: 1.5, carbs: 15, grasas: 0.5 },
+  { nombre: "Fresas", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 32, proteina: 0.7, carbs: 7.7, grasas: 0.3 },
+  { nombre: "Arándanos", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 57, proteina: 0.7, carbs: 14, grasas: 0.3 },
+  { nombre: "Uvas", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 69, proteina: 0.7, carbs: 18, grasas: 0.2 },
+  { nombre: "Sandía", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 30, proteina: 0.6, carbs: 8, grasas: 0.2 },
+  { nombre: "Melón", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 34, proteina: 0.8, carbs: 8, grasas: 0.2 },
+  { nombre: "Mango", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 60, proteina: 0.8, carbs: 15, grasas: 0.4 },
+  { nombre: "Piña", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 50, proteina: 0.5, carbs: 13, grasas: 0.1 },
+
+  { nombre: "Yogur griego natural", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 97, proteina: 9, carbs: 4, grasas: 5 },
+  { nombre: "Yogur griego 0%", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 59, proteina: 10, carbs: 3.6, grasas: 0.4 },
+  { nombre: "Yogur natural", tipoMedida: "unidad", unidad: "yogur", unidadPlural: "yogures", kcal: 75, proteina: 4, carbs: 6, grasas: 4 },
+  { nombre: "Yogur 0%", tipoMedida: "unidad", unidad: "yogur", unidadPlural: "yogures", kcal: 55, proteina: 5, carbs: 6, grasas: 0.2 },
+  { nombre: "Yogomix Mercadona", tipoMedida: "unidad", unidad: "yogomix", unidadPlural: "yogomix", kcal: 170, proteina: 5, carbs: 25, grasas: 5 },
+  { nombre: "Queso fresco batido", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 46, proteina: 8, carbs: 3.5, grasas: 0.2 },
+  { nombre: "Leche semidesnatada", tipoMedida: "gramos", unidad: "ml", unidadPlural: "ml", kcal: 46, proteina: 3.2, carbs: 4.8, grasas: 1.6 },
+  { nombre: "Leche desnatada", tipoMedida: "gramos", unidad: "ml", unidadPlural: "ml", kcal: 35, proteina: 3.4, carbs: 5, grasas: 0.1 },
+  { nombre: "Bebida de avena", tipoMedida: "gramos", unidad: "ml", unidadPlural: "ml", kcal: 45, proteina: 1, carbs: 7, grasas: 1.5 },
+
+  { nombre: "Corn Flakes Mercadona", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 370, proteina: 7, carbs: 84, grasas: 1 },
+  { nombre: "Cereales chocolate", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 390, proteina: 7, carbs: 78, grasas: 5 },
+  { nombre: "Muesli", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 370, proteina: 10, carbs: 65, grasas: 7 },
+  { nombre: "Crepe Mercadona", tipoMedida: "unidad", unidad: "crepe", unidadPlural: "crepes", kcal: 180, proteina: 4, carbs: 25, grasas: 7 },
+  { nombre: "Tortita de arroz", tipoMedida: "unidad", unidad: "tortita", unidadPlural: "tortitas", kcal: 30, proteina: 0.6, carbs: 6.5, grasas: 0.2 },
+  { nombre: "Tortita de maíz", tipoMedida: "unidad", unidad: "tortita", unidadPlural: "tortitas", kcal: 28, proteina: 0.5, carbs: 5.8, grasas: 0.3 },
+  { nombre: "Barrita proteína", tipoMedida: "unidad", unidad: "barrita", unidadPlural: "barritas", kcal: 200, proteina: 20, carbs: 18, grasas: 7 },
+
+  { nombre: "Aceite de oliva", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 884, proteina: 0, carbs: 0, grasas: 100 },
+  { nombre: "Aguacate", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 160, proteina: 2, carbs: 9, grasas: 15 },
+  { nombre: "Almendras", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 579, proteina: 21, carbs: 22, grasas: 50 },
+  { nombre: "Nueces", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 654, proteina: 15, carbs: 14, grasas: 65 },
+  { nombre: "Anacardos", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 553, proteina: 18, carbs: 30, grasas: 44 },
+  { nombre: "Pistachos", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 562, proteina: 20, carbs: 28, grasas: 45 },
+  { nombre: "Mantequilla de cacahuete", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 588, proteina: 25, carbs: 20, grasas: 50 },
+
+  { nombre: "Tomate", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 18, proteina: 0.9, carbs: 3.9, grasas: 0.2 },
+  { nombre: "Lechuga", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 15, proteina: 1.4, carbs: 2.9, grasas: 0.2 },
+  { nombre: "Cebolla", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 40, proteina: 1.1, carbs: 9.3, grasas: 0.1 },
+  { nombre: "Zanahoria", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 41, proteina: 0.9, carbs: 10, grasas: 0.2 },
+  { nombre: "Brócoli", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 34, proteina: 2.8, carbs: 7, grasas: 0.4 },
+  { nombre: "Calabacín", tipoMedida: "gramos", unidad: "g", unidadPlural: "g", kcal: 17, proteina: 1.2, carbs: 3.1, grasas: 0.3 }
 ];
 
 const alimentosGuardados = JSON.parse(localStorage.getItem("alimentos"));
-let alimentos = Array.isArray(alimentosGuardados) && alimentosGuardados.length > 0
-  ? alimentosGuardados
+
+let alimentos = Array.isArray(alimentosGuardados)
+  ? [
+      ...alimentosBase,
+      ...alimentosGuardados.filter(function (alimentoGuardado) {
+        return !alimentosBase.some(function (alimentoBase) {
+          return alimentoBase.nombre.toLowerCase() === alimentoGuardado.nombre.toLowerCase();
+        });
+      })
+    ]
   : alimentosBase;
 
 const fechaTexto = document.querySelector(".date");
